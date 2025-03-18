@@ -1,11 +1,19 @@
 <!doctype html>
-<html>
+<html lang="en" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="src/output.css" rel="stylesheet">
   <title>Portofolio Tailwind Muhammad Nur Alam</title>
+  <script>
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    document.documentElement.classList.toggle(
+      "dark",
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
+    );
+  </script>
 </head>
 
 <body>
@@ -19,34 +27,53 @@
         <div class="flex items-center px-4 ">
           <button id="hamburger" name="humburger" class="block absolute right-4 lg:hidden">
             <span
-              class="w-[30px] h-[2px] my-2 block bg-slate-900 transition duration-300 ease-in-out origin-top-left"></span>
-            <span class="w-[30px] h-[2px] my-2 block bg-slate-900 transition duration-300 ease-in-out"></span>
+              class="w-[30px] h-[2px] my-2 block bg-slate-900 transition duration-300 ease-in-out origin-top-left dark:bg-white"></span>
             <span
-              class="w-[30px] h-[2px] my-2 block bg-slate-900 transition duration-300 ease-in-out origin-bottom-left"></span>
+              class="w-[30px] h-[2px] my-2 block bg-slate-900 transition duration-300 ease-in-out dark:bg-white"></span>
+            <span
+              class="w-[30px] h-[2px] my-2 block bg-slate-900 transition duration-300 ease-in-out origin-bottom-left dark:bg-white"></span>
           </button>
 
           <nav id="nav-menu"
-            class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+            class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-no dark:bg-gray-900 dark:shadow-slate-600 lg:dark:bg-transparent">
             <ul class="block lg:flex">
               <li class="group">
-                <a href="#home" class="text-slate-900 text-base py-2 mx-8 flex group-hover:text-teal-500">Beranda</a>
+                <a href="#home"
+                  class="text-slate-900 text-base py-2 mx-8 flex group-hover:text-teal-500 dark:text-white">Beranda</a>
               </li>
               <li class="group">
-                <a href="#about" class="text-slate-900 text-base py-2 mx-8 flex group-hover:text-teal-500">Tentang
+                <a href="#about"
+                  class="text-slate-900 text-base py-2 mx-8 flex group-hover:text-teal-500 dark:text-white">Tentang
                   Saya</a>
               </li>
               <li class="group">
                 <a href="#portofolio"
-                  class="text-slate-900 text-base py-2 mx-8 flex group-hover:text-teal-500">Portofolio</a>
+                  class="text-slate-900 text-base py-2 mx-8 flex group-hover:text-teal-500 dark:text-white">Portofolio</a>
               </li>
               <li class="group">
-                <a href="#skills" class="text-slate-900 text-base py-2 mx-8 flex group-hover:text-teal-500">Skills</a>
+                <a href="#skills"
+                  class="text-slate-900 text-base py-2 mx-8 flex group-hover:text-teal-500 dark:text-white">Skills</a>
               </li>
               <li class="group">
-                <a href="#Blog" class="text-slate-900 text-base py-2 mx-8 flex group-hover:text-teal-500">Sertifikasi</a>
+                <a href="#Blog"
+                  class="text-slate-900 text-base py-2 mx-8 flex group-hover:text-teal-500 dark:text-white">Sertifikasi</a>
               </li>
               <li class="group">
-                <a href="#Contact" class="text-slate-900 text-base py-2 mx-8 flex group-hover:text-teal-500">Contact</a>
+                <a href="#Contact"
+                  class="text-slate-900 text-base py-2 mx-8 flex group-hover:text-teal-500 dark:text-white">Contact</a>
+              </li>
+              <li class="flex items-center pl-8 mt-3 lg:mt-0">
+                <div class="flex">
+                  <span class="mr-2 text-sm text-slate-500 dark:text-white">Light</span>
+                  <input type="checkbox" class="hidden" id="dark-toggle">
+                  <label for="dark-toggle">
+                    <div class="flex h-5 w-9 bg-slate-500 rounded-full cursor-pointer p-1 items-center">
+                      <div class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out">
+                      </div>
+                    </div>
+                  </label>
+                  <span class="ml-2 text-sm text-slate-500 dark:text-white">Dark</span>
+                </div>
               </li>
             </ul>
           </nav>
@@ -58,14 +85,17 @@
   <!-- Header End -->
 
   <!-- Hero Section Start -->
-  <section id="home" class="pt-36">
+  <section id="home" class="pt-36 dark:bg-gray-900">
     <div class="container">
       <div class="flex flex-wrap">
         <div class="w-full self-center px-4 lg:w-1/2 ">
           <h1 class="text-base font-semibold text-teal-500 md:text-xl lg:text-2xl">Halo Semua ✋ Saya , <span
-              class="block font-bold text-slate-900 text-4xl ">Muhammad Nur Alam</span> </h1>
-          <h2 class="font-medium text-slate-500 text-lg mb-5 lg:text-2xl ">Mahasiswa Web Doveleoper</h2>
-          <p class="font-medium text-slate-400 mb-10 leading-relaxed ">Saya seorang mahasiswa yang memiliki passion di bidang pengembangan web, terutama frontend development. Selalu ingin belajar dan berbagi ilmu tentang <span class="font-bold text-slate-900">teknologi!</span></p>
+              class="block font-bold text-slate-900 text-4xl dark:text-white ">Muhammad Nur Alam</span> </h1>
+          <h2 class="font-medium text-slate-500 text-lg mb-5 lg:text-2xl ">Mahasiswa <span
+              class="text-slate-800 dark:text-white"> Web Doveleoper</span> </h2>
+          <p class="font-medium text-slate-400 mb-10 leading-relaxed ">Saya seorang mahasiswa yang memiliki passion di
+            bidang pengembangan web, terutama frontend development. Selalu ingin belajar dan berbagi ilmu tentang <span
+              class="font-bold text-slate-900 dark:text-white">teknologi!</span></p>
 
           <a class="font-semibold text-base text-white px-8 py-4 bg-teal-500 rounded-full hover:bg-teal-400 transition duration-300 ease-in-out"
             href="">Hubungi Saya</a>
@@ -73,8 +103,8 @@
 
         <div class="w-full self-end px-4 lg:w-1/2 ">
           <div class="mt-10 lg:mt-0 lg:right-0 relative">
-            <img src="img/2.png" alt="Gambar" class="max-w-full mx-auto rounded">
-            <span class="absolute -z-10 -bottom-0 left-1/2  -translate-x-1/2 ">
+            <img src="img/2.png" alt="Gambar" class="max-w-full mx-auto rounded relative z-10">
+            <span class="absolute -bottom-0 left-1/2  -translate-x-1/2 ">
               <svg width="400" height="410" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                 <path fill="#14b8a6"
                   d="M36.7,-55.1C45.6,-44.1,49.4,-30.7,52,-18C54.7,-5.3,56.2,6.7,53.1,17.6C50,28.4,42.3,38,32.7,50.9C23.1,63.7,11.5,79.7,-1.7,82.1C-15,84.5,-30.1,73.3,-38.4,60.1C-46.8,46.8,-48.5,31.6,-55.7,16.4C-62.9,1.3,-75.6,-13.7,-75.4,-27.6C-75.1,-41.4,-61.8,-54.1,-47.1,-63.2C-32.4,-72.2,-16.2,-77.5,-1.1,-76C13.9,-74.4,27.9,-66,36.7,-55.1Z"
@@ -89,17 +119,21 @@
   <!-- Hero Section end -->
 
   <!-- About Section Start -->
-  <section id="about" class="pt-36 pb-32">
+  <section id="about" class="pt-36 pb-32 dark:bg-slate-900">
     <div class="container">
       <div class="flex flex-wrap">
         <div class="w-full px-4 mb-10 lg:w-1/2 ">
           <h4 class="font-bold text-teal-500 uppercase text-lg lg:text-2xl mb-3">Tentang Saya</h4>
-          <h2 class="font-bold text-slate-900 text-3xl mb-5 max-w-md">Yuk, Belajar Web Programing!!</h2>
-          <p class="font-medium text-slate-500 mb-5 text-base lg:text-lg ">Saya percaya bahwa pemrograman web adalah keterampilan masa depan. Dengan kreativitas dan teknologi, kita bisa menciptakan solusi inovatif yang bermanfaat bagi banyak orang.</p>
+          <h2 class="font-bold text-slate-900 text-3xl mb-5 max-w-md dark:text-white">Yuk, Belajar Web Programing!!</h2>
+          <p class="font-medium text-slate-500 mb-5 text-base lg:text-lg ">Saya percaya bahwa pemrograman web adalah
+            keterampilan masa depan. Dengan kreativitas dan teknologi, kita bisa menciptakan solusi inovatif yang
+            bermanfaat bagi banyak orang.</p>
         </div>
         <div class="w-full px-4 lg:w-1/2">
-          <h3 class="font-semibold text-slate-900 text-2xl mb-4 lg:text-3xl lg:pt-10 ">Mari Berteman</h3>
-          <p class="font-medium text-base text-slate-500 mb-6 lg:text-lg">Mari saling terhubung dan berbagi pengalaman di dunia teknologi. Jangan ragu untuk mengajak diskusi atau berbagi wawasan seputar pengembangan web dan teknologi lainnya! 🚀</p>
+          <h3 class="font-semibold text-slate-900 text-2xl mb-4 lg:text-3xl lg:pt-10 dark:text-white">Mari Berteman</h3>
+          <p class="font-medium text-base text-slate-500 mb-6 lg:text-lg">Mari saling terhubung dan berbagi pengalaman
+            di dunia teknologi. Jangan ragu untuk mengajak diskusi atau berbagi wawasan seputar pengembangan web dan
+            teknologi lainnya! 🚀</p>
           <div class="flex items-center justify-center lg:justify-start ">
             <!-- Instagram -->
             <a href="#" target="_blank"
@@ -150,13 +184,15 @@
   <!-- About Section End -->
 
   <!-- portofolio Section Start -->
-  <section id="portofolio" class="pt-36 pb-16 bg-slate-100">
+  <section id="portofolio" class="pt-36 pb-16 bg-slate-100 dark:bg-slate-800">
     <div class="container">
       <div class="w-full px-4">
         <div class="max-w-xl mx-auto text-center mb-16 ">
           <h4 class="font-semibold text-teal-500 text-lg mb-2">Portofolio</h4>
-          <h2 class="font-bold text-2xl mb-4 text-slate-900 lg:text-3xl">Projek Terbaru</h2>
-          <p class="font-medium text-slate-500 md:text-lg">Berikut beberapa proyek terbaru yang telah saya kerjakan <span class=" text-slate-900 text-bold">:</span></p>
+          <h2 class="font-bold text-2xl mb-4 text-slate-900 lg:text-3xl dark:text-white">Projek Terbaru</h2>
+          <p class="font-medium text-slate-500 md:text-lg">Berikut beberapa proyek terbaru yang telah saya kerjakan
+            <span class=" text-slate-900 text-bold">:</span>
+          </p>
         </div>
       </div>
 
@@ -165,15 +201,17 @@
           <div class="rounded-md shadow-md overflow-hidden">
             <img src="img/1.jpg" alt="movie web" width="w-full" class="object-cover w-full h-full">
           </div>
-          <h3 class="font-semibold text-xl mt-5 mb-3">Website Movie with PHP CRUD</h3>
-          <p class="font-medium text-base text-slate-500">Sebuah website manajemen film berbasis PHP dengan fitur CRUD (Create, Read, Update, Delete). Website ini memungkinkan pengguna untuk menambahkan, mengedit, dan menghapus data film dengan mudah.</p>
+          <h3 class="font-semibold text-xl mt-5 mb-3 dark:text-white">Website Movie with PHP CRUD</h3>
+          <p class="font-medium text-base text-slate-500">Sebuah website manajemen film berbasis PHP dengan fitur CRUD
+            (Create, Read, Update, Delete). Website ini memungkinkan pengguna untuk menambahkan, mengedit, dan menghapus
+            data film dengan mudah.</p>
         </div>
 
         <div class="mb-12 p-4 md:w-1/2">
           <div class="rounded-md shadow-md overflow-hidden">
             <img src="img/1.jpg" alt="movie web" width="w-full" class="object-cover w-full h-full">
           </div>
-          <h3 class="font-semibold text-xl mt-5 mb-3">Website Movie with PHP CRUD</h3>
+          <h3 class="font-semibold text-xl mt-5 mb-3 dark:text-white">Website Movie with PHP CRUD</h3>
           <p class="font-medium text-base text-slate-500">Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Voluptatum eligendi tempora sit perferendis quod?</p>
         </div>
@@ -182,7 +220,7 @@
           <div class="rounded-md shadow-md overflow-hidden">
             <img src="img/1.jpg" alt="movie web" width="w-full" class="object-cover w-full h-full">
           </div>
-          <h3 class="font-semibold text-xl mt-5 mb-3">Website Movie with PHP CRUD</h3>
+          <h3 class="font-semibold text-xl mt-5 mb-3 dark:text-white">Website Movie with PHP CRUD</h3>
           <p class="font-medium text-base text-slate-500">Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Voluptatum eligendi tempora sit perferendis quod?</p>
         </div>
@@ -191,7 +229,7 @@
           <div class="rounded-md shadow-md overflow-hidden">
             <img src="img/1.jpg" alt="movie web" width="w-full" class="object-cover w-full h-full">
           </div>
-          <h3 class="font-semibold text-xl mt-5 mb-3">Website Movie with PHP CRUD</h3>
+          <h3 class="font-semibold text-xl mt-5 mb-3 dark:text-white">Website Movie with PHP CRUD</h3>
           <p class="font-medium text-base text-slate-500 ">Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Voluptatum eligendi tempora sit perferendis quod?</p>
         </div>
@@ -202,13 +240,15 @@
   <!-- portofolio Section End -->
 
   <!-- Skill Section Start -->
-  <div id="skills" class="pt-36 pb-0 bg-slate-700">
+  <div id="skills" class="pt-36 pb-0 bg-slate-700 dark:bg-slate-200">
     <div class="container">
       <div class="w-full px-4">
         <div class="max-w-xl mx-auto text-center mb-16 ">
-          <h4 class="font-semibold text-teal-500 text-lg mb-2">Skils</h4>
-          <h2 class="font-bold text-3xl mb-4 text-white sm:text-4xl lg:text-5xl">Memahami Penguasaan </h2>
-          <p class="font-medium text-slate-500 md:text-lg">Kemampuan yang saya kuasai dalam pengembangan web dan teknologi</p>
+          <h4 class="font-semibold text-teal-500 text-xl mb-2">Skils</h4>
+          <h2 class="font-bold text-3xl mb-4 text-white sm:text-4xl lg:text-5xl dark:text-slate-900">Memahami Penguasaan
+          </h2>
+          <p class="font-medium text-slate-500 md:text-lg">Kemampuan yang saya kuasai dalam pengembangan web dan
+            teknologi</p>
         </div>
       </div>
       <div class="w-full px-4">
@@ -264,12 +304,12 @@
     <!-- Skill Section End -->
 
     <!-- Blog Setion -->
-    <div id="Blog" class="pt-36 pb-32 bg-slate-100">
+    <div id="Blog" class="pt-36 pb-32 bg-slate-100 dark:bg-gray-900">
       <div class="container">
         <div class="w-full px-4">
           <div class="max-w-xl mx-auto text-center mb-16 ">
-            <h4 class="font-semibold text-teal-500 text-lg mb-2">Sertifikasi</h4>
-            <h2 class="font-bold text-2xl mb-4 text-slate-900 lg:text-3xl">Sertifikasi Terkini</h2>
+            <h4 class="font-semibold text-teal-500 text-lg mb-2 ">Sertifikasi</h4>
+            <h2 class="font-bold text-2xl mb-4 text-slate-900 lg:text-3xl dark:text-white">Sertifikasi Terkini</h2>
             <p class="font-medium text-slate-500 md:text-lg">Beberapa sertifikasi yang telah saya peroleh:</p>
           </div>
         </div>
@@ -320,13 +360,14 @@
     <!-- Blog Setion -->
 
     <!-- Contanct Seciton Start -->
-    <section id="Contact" class="pt-36 pb-36 bg-white">
+    <section id="Contact" class="pt-36 pb-36 bg-white dark:bg-slate-800">
       <div class="container">
         <div class="w-full px-4">
           <div class="max-w-xl mx-auto text-center mb-16 ">
             <h4 class="font-semibold text-teal-500 text-lg mb-2">Contact</h4>
-            <h2 class="font-bold text-2xl mb-4 text-slate-900 lg:text-3xl">Hubungi Saya 📩</h2>
-            <p class="font-medium text-slate-500 md:text-lg">Ingin berdiskusi atau berkolaborasi? Jangan ragu untuk menghubungi saya! 🚀
+            <h2 class="font-bold text-2xl mb-4 text-slate-900 lg:text-3xl dark:text-white">Hubungi Saya 📩</h2>
+            <p class="font-medium text-slate-500 md:text-lg">Ingin berdiskusi atau berkolaborasi? Jangan ragu untuk
+              menghubungi saya! 🚀
 
             </p>
           </div>
@@ -467,10 +508,13 @@
     </footer>
     <!-- Footer End -->
 
-
+    <!-- Back To Top Start -->
+    <a href="#home" id="toTop"
+      class="hidden fixed z-[9999] h-14 w-14 bg-sky-400 rounded-full bottom-4 right-4 p-4 justify-center items-center hover:animate-pulse">
+      <span class="block w-5 h-5 border-t-2 border-l-2 rotate-45 mt-2 text-white"></span>
+    </a>
 
     <script src="js/script.js">
-
     </script>
 </body>
 
